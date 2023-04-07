@@ -2,17 +2,18 @@ import React, { useRef } from 'react'
 import { useGLTF, OrthographicCamera } from '@react-three/drei'
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('next/board.gltf')
+  const { nodes, materials } = useGLTF('/board.gltf')
+
   return (
     <group {...props} dispose={null}>
-      <group scale={0.01}>
+      <group position={(0, 0, 0)} scale={0.01}>
         <directionalLight intensity={0.66} decay={2} rotation={[-0.38, -0.52, -0.67]} />
         <directionalLight intensity={0.87} decay={2} rotation={[-0.48, 0.28, 1.09]} />
         <OrthographicCamera
           makeDefault={false}
           far={100000}
           near={0}
-          position={[-185.73, 37.95, 981.87]}
+          position={[0, 0, 0]}
           rotation={[-0.04, -0.19, -0.01]}
         />
         <mesh
@@ -69,5 +70,3 @@ export function Model(props) {
     </group>
   )
 }
-
-useGLTF.preload('/board.gltf')
