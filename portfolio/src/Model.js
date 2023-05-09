@@ -4,7 +4,7 @@ import { Trans } from './Trans'
 import { useFrame } from '@react-three/fiber'
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/board2.glb')
+  const { nodes, materials } = useGLTF('/board3.glb')
 
   const materialProps = {
     thickness: { value: 5, min: 0, max: 20 },
@@ -30,41 +30,41 @@ export function Model(props) {
 
   return (
     <group {...props} dispose={null}>
-      <group scale={0.01}>
+      <group scale={0.03}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Bunny.geometry}
           material={materials['Material.004']}
-          position={[53.11, 47.12, 53.98]}
+          position={[53.11, -25, 53.98]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Ellipse.geometry}
           material={materials['Material.002']}
-          position={[-59.74, 51.79, 46.19]}
+          position={[-59.74, -20, 46.19]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Rectangle.geometry}
           material={materials['Material.001']}
-          position={[3.41, 67.19, 17.37]}
+          position={[3.41, 0, 17.37]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Rectangle_2.geometry}
           material={materials['Material.002']}
-          position={[5.41, 71.83, 30.58]}
+          position={[5.41, 0, 30.58]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Sphere.geometry}
           material={materials['Material.003']}
-          position={[66.98, 95.74, 43.11]}
+          position={[66.98, 20, 43.11]}
           rotation={[-Math.PI / 9, 0.23, 0]}
         />
         <mesh
@@ -72,11 +72,11 @@ export function Model(props) {
           receiveShadow
           geometry={nodes.Text.geometry}
           material={materials['Material.003']}
-          position={[18.03, 73.58, 40.99]}
+          position={[18.03, 0, 40.99]}
         />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('/board2.glb')
+useGLTF.preload('/board3.glb')

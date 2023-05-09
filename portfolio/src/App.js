@@ -2,7 +2,7 @@ import logo from './logo.svg'
 import './App.css'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Environment, PresentationControls, OrthographicCamera } from '@react-three/drei'
+import { OrbitControls, Environment, PresentationControls, OrthographicCamera, CameraControls } from '@react-three/drei'
 import { Model } from './Model'
 import { DirectionalLight } from 'three'
 
@@ -23,7 +23,18 @@ function App() {
                 polar={[-Math.PI / 3, Math.PI / 3]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
               >
-                {/* <OrthographicCamera makeDefault zoom={55} position={(10, 10, 1)} /> */}
+                <OrthographicCamera
+                  makeDefault
+                  zoom={55}
+                  top={200}
+                  bottom={-200}
+                  left={200}
+                  right={-200}
+                  near={1}
+                  far={2000}
+                  position={[0, 0, 200]}
+                />
+                {/* <CameraControls makeDefault /> */}
                 <Model />
               </PresentationControls>
               {/* <OrbitControls /> */}
