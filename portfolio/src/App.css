@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 
 .container{
   margin: 0px;
@@ -33,6 +35,35 @@
   width: 70vw;
   height: 20vw;
   margin-top: 0px;
+}
+
+.nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+
+}
+
+.nav li{
+  font-size: 24px;
+  color: #CC9DC2;
+  border-radius: 10px;
+  border-width: 2.5px;
+  border-style: solid;
+  border-color: #7493DE;  
+  width: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav a{
+ 
+  padding: 5px;
+ 
 }
 
 

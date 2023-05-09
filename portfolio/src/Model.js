@@ -1,72 +1,82 @@
 import React, { useRef } from 'react'
-import { useGLTF, OrthographicCamera } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
+import { Trans } from './Trans'
+import { useFrame } from '@react-three/fiber'
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/board.gltf')
+  const { nodes, materials } = useGLTF('/board2.glb')
+
+  const materialProps = {
+    thickness: { value: 5, min: 0, max: 20 },
+    roughness: { value: 0, min: 0, max: 1, step: 0.1 },
+    clearcoat: { value: 1, min: 0, max: 1, step: 0.1 },
+    clearcoatRoughness: { value: 0, min: 0, max: 1, step: 0.1 },
+    transmission: { value: 1, min: 0.9, max: 1, step: 0.01 },
+    ior: { value: 1.25, min: 1, max: 2.3, step: 0.05 },
+    envMapIntensity: { value: 25, min: 0, max: 100, step: 1 },
+    color: '#ffffff',
+    attenuationTint: '#ffe79e',
+    attenuationDistance: { value: 0, min: 0, max: 1 },
+  }
+
+  const ref = useRef()
+  // useFrame((state) => {
+  //   const t = state.clock.getElapsedTime()
+  //   ref.current.rotation.x = -Math.PI / 4 + Math.cos(t / 12) / 1
+  //   // ref.current.rotation.y = Math.sin(t / 4) / 8
+  //   ref.current.rotation.z = (1 + Math.sin(t / 1.5)) / 10
+  //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10
+  // })
 
   return (
     <group {...props} dispose={null}>
-      <group position={(0, 0, 0)} scale={0.01}>
-        <directionalLight intensity={0.66} decay={2} rotation={[-0.38, -0.52, -0.67]} />
-        <directionalLight intensity={0.87} decay={2} rotation={[-0.48, 0.28, 1.09]} />
-        <OrthographicCamera
-          makeDefault={false}
-          far={100000}
-          near={0}
-          position={[0, 0, 0]}
-          rotation={[-0.04, -0.19, -0.01]}
-        />
+      <group scale={0.01}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Bunny.geometry}
-          material={nodes.Bunny.material}
-          position={[75.97, 0, 47.28]}
-          rotation={[0, 0.81, 0]}
-          scale={[1, 1, 0.8]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Rectangle_2.geometry}
-          material={nodes.Rectangle_2.material}
-          position={[-15.31, 80.81, 9.27]}
-          rotation={[-Math.PI / 9, 0.23, 0.17]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Sphere.geometry}
-          material={nodes.Sphere.material}
-          position={[186.01, 133.29, -20.25]}
-          rotation={[-Math.PI / 9, 0.23, 0]}
+          material={materials['Material.004']}
+          position={[53.11, 47.12, 53.98]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Ellipse.geometry}
-          material={nodes.Ellipse.material}
-          position={[-195.52, 30.16, 104.56]}
+          material={materials['Material.002']}
+          position={[-59.74, 51.79, 46.19]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Rectangle.geometry}
+          material={materials['Material.001']}
+          position={[3.41, 67.19, 17.37]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Rectangle_2.geometry}
+          material={materials['Material.002']}
+          position={[5.41, 71.83, 30.58]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Sphere.geometry}
+          material={materials['Material.003']}
+          position={[66.98, 95.74, 43.11]}
           rotation={[-Math.PI / 9, 0.23, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Text.geometry}
-          material={nodes.Text.material}
-          position={[25.98, 86.53, 27.93]}
-          rotation={[-Math.PI / 9, 0.23, -0.08]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Rectangle.geometry}
-          material={nodes.Rectangle.material}
-          position={[-21.85, 65.63, -26.74]}
-          rotation={[-0.34, 0.23, 0]}
-          scale={[0.98, 1, 2.15]}
+          material={materials['Material.003']}
+          position={[18.03, 73.58, 40.99]}
         />
       </group>
     </group>
   )
 }
+
+useGLTF.preload('/board2.glb')
