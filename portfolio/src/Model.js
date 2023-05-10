@@ -30,7 +30,7 @@ export function Model(props) {
 
   return (
     <group {...props} dispose={null}>
-      <group scale={0.03}>
+      <group scale={0.04}>
         <mesh
           castShadow
           receiveShadow
@@ -42,7 +42,7 @@ export function Model(props) {
           castShadow
           receiveShadow
           geometry={nodes.Ellipse.geometry}
-          material={materials['Material.002']}
+          material={materials['Material.004']}
           position={[-59.74, -20, 46.19]}
         />
         <mesh
@@ -56,7 +56,7 @@ export function Model(props) {
           castShadow
           receiveShadow
           geometry={nodes.Rectangle_2.geometry}
-          material={materials['Material.002']}
+          material={materials['Material.004']}
           position={[5.41, 0, 30.58]}
         />
         <mesh

@@ -1,12 +1,16 @@
-import logo from './logo.svg'
 import './App.css'
+import * as React from 'react'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Environment, PresentationControls, OrthographicCamera, CameraControls } from '@react-three/drei'
+import { Environment, PresentationControls, OrthographicCamera } from '@react-three/drei'
 import { Model } from './Model'
-import { DirectionalLight } from 'three'
+import { Routes, Route, Link, Outlet } from 'react-router-dom'
 
 function App() {
+  const Projects = React.lazy(() => import('./Projects'))
+  const Photos = React.lazy(() => import('./Photos'))
+  const Strangeanimals = React.lazy(() => import('./Strangeanimals'))
+
   return (
     <div className='container'>
       <div className='App'>
@@ -19,12 +23,11 @@ function App() {
               <PresentationControls
                 config={{ mass: 20, tension: 500 }}
                 snap={{ mass: 20, tension: 1500 }}
-                rotation={[0, 0.2, 0]}
-                polar={[-Math.PI / 3, Math.PI / 3]}
+                rotation={[0, 0, 0]}
+                polar={[-Infinity, Infinity]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
               >
                 <OrthographicCamera
-                  makeDefault
                   zoom={55}
                   top={200}
                   bottom={-200}
@@ -44,15 +47,55 @@ function App() {
         <div className='nav'>
           <ul>
             <li>
-              <a>Home</a>
+              <Link to='/projects'>PROJECTS</Link>
             </li>
             <li>
-              <a>News</a>
+              <Link to='/photos'>PHOTOS</Link>
             </li>
             <li>
-              <a>Contact</a>
+              <Link to='/strangeanimals'>STRANGE ANIMALS</Link>
             </li>
           </ul>
+          <Outlet />
+        </div>
+        <div className='content'>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Projects />
+                </React.Suspense>
+              }
+            />
+
+            <Route
+              path='projects'
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Projects />
+                </React.Suspense>
+              }
+            />
+
+            <Route
+              path='photos'
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Photos />
+                </React.Suspense>
+              }
+            />
+
+            <Route
+              path='strangeanimals'
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Strangeanimals />
+                </React.Suspense>
+              }
+            />
+          </Routes>
         </div>
       </div>
     </div>
