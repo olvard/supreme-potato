@@ -1,32 +1,9 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
-import { Trans } from './Trans'
 import { useFrame } from '@react-three/fiber'
 
 export function Model(props) {
   const { nodes, materials } = useGLTF('/board3.glb')
-
-  const materialProps = {
-    thickness: { value: 5, min: 0, max: 20 },
-    roughness: { value: 0, min: 0, max: 1, step: 0.1 },
-    clearcoat: { value: 1, min: 0, max: 1, step: 0.1 },
-    clearcoatRoughness: { value: 0, min: 0, max: 1, step: 0.1 },
-    transmission: { value: 1, min: 0.9, max: 1, step: 0.01 },
-    ior: { value: 1.25, min: 1, max: 2.3, step: 0.05 },
-    envMapIntensity: { value: 25, min: 0, max: 100, step: 1 },
-    color: '#ffffff',
-    attenuationTint: '#ffe79e',
-    attenuationDistance: { value: 0, min: 0, max: 1 },
-  }
-
-  const ref = useRef()
-  // useFrame((state) => {
-  //   const t = state.clock.getElapsedTime()
-  //   ref.current.rotation.x = -Math.PI / 4 + Math.cos(t / 12) / 1
-  //   // ref.current.rotation.y = Math.sin(t / 4) / 8
-  //   ref.current.rotation.z = (1 + Math.sin(t / 1.5)) / 10
-  //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10
-  // })
 
   return (
     <group {...props} dispose={null}>

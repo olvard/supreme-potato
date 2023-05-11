@@ -18,10 +18,23 @@
 	height: 100%;
 	width: 100%;
 	border-radius: 4px;
-	transition: all 500ms;
 	overflow: hidden;
 
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
+
+.card.expanded {
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 36px;
+  }

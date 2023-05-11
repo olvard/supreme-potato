@@ -1,15 +1,15 @@
-import './App.css'
+import './styles/App.css'
 import * as React from 'react'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, PresentationControls, OrthographicCamera } from '@react-three/drei'
-import { Model } from './Model'
+import { Model } from './components/Model'
 import { Routes, Route, Link, Outlet } from 'react-router-dom'
 
 function App() {
-  const Projects = React.lazy(() => import('./Projects'))
-  const Photos = React.lazy(() => import('./Photos'))
-  const Strangeanimals = React.lazy(() => import('./Strangeanimals'))
+  const Projects = React.lazy(() => import('./components/Projects'))
+  const Photos = React.lazy(() => import('./components/Photos'))
+  const Strangeanimals = React.lazy(() => import('./components/Strangeanimals'))
 
   return (
     <div className='container'>
@@ -17,7 +17,7 @@ function App() {
         <header className='three'>
           <Canvas>
             <Suspense fallback={null}>
-              <ambientLight intensity={0.1} />
+              {/* <ambientLight intensity={0.1} />
               <Environment preset='forest' />
               <directionalLight color='white' position={[0, 0, 5]} />
               <PresentationControls
@@ -37,10 +37,9 @@ function App() {
                   far={2000}
                   position={[0, 0, 200]}
                 />
-                {/* <CameraControls makeDefault /> */}
+               
                 <Model />
-              </PresentationControls>
-              {/* <OrbitControls /> */}
+              </PresentationControls> */}
             </Suspense>
           </Canvas>
         </header>
