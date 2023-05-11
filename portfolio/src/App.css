@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
+body{
+  background-color: #222222;
+  height: 100%;
+}
 
 .container{
   margin: 0px;
@@ -7,8 +11,6 @@
 	box-sizing: border-box;
 	font-family: 'Staatliches', cursive;
 	max-width: 100%;
-	overflow-x: hidden;
-  background-color: #222222;
   display: flex;
   flex-direction: column;
   align-items: center;
