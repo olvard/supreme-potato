@@ -57,44 +57,46 @@ function App() {
           </ul>
           <Outlet />
         </div>
-        <div className='content'>
-          <Routes>
-            <Route
-              path='/'
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Projects />
-                </React.Suspense>
-              }
-            />
+        <div className='centering'>
+          <div className='content'>
+            <Routes>
+              <Route
+                path='/'
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Projects />
+                  </React.Suspense>
+                }
+              />
 
-            <Route
-              path='projects'
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Projects />
-                </React.Suspense>
-              }
-            />
+              <Route
+                path='projects'
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Projects />
+                  </React.Suspense>
+                }
+              />
 
-            <Route
-              path='photos'
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Photos />
-                </React.Suspense>
-              }
-            />
+              <Route
+                path='photos'
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Photos />
+                  </React.Suspense>
+                }
+              />
 
-            <Route
-              path='strangeanimals'
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Strangeanimals />
-                </React.Suspense>
-              }
-            />
-          </Routes>
+              <Route
+                path='strangeanimals'
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Strangeanimals />
+                  </React.Suspense>
+                }
+              />
+            </Routes>
+          </div>
         </div>
       </div>
     </div>
